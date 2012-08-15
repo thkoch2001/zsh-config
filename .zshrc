@@ -40,5 +40,10 @@ zsh-mime-setup
 # particular shell function). $fpath should not be empty for this to work.
 for func in $^fpath/*(N-.x:t); autoload $func
 
+# http://linux-sxs.org/housekeeping/lscolors.html
+# http://www.bigsoft.co.uk/blog/index.php/2008/04/11/configuring-ls_colors?blog=3
+# http://www.linux-user.de/ausgabe/2004/09/068-dircolors/index.html?print=y
+export LS_COLORS='di=94:fi=0:ln=04:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=92:*.rpm=90'
+alias "ls=ls --color=auto"
 
 . ~/.myenvironment
