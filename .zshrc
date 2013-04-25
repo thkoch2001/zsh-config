@@ -22,7 +22,6 @@ setopt HIST_SAVE_NO_DUPS
 RPS1="%(?..(ret: %?%)) %~"
 PS1="%h%#"
 
-PATH=$PATH:~/bin
 setopt SHARE_HISTORY
 
 #from http://www.bash2zsh.com/essays/essay1_file_manager.html
