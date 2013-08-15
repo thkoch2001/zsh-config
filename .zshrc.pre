@@ -1,0 +1,3 @@
+export BATTERY=1
+export HISTFILE=~/.local/state/zsh/history
+export DIRSTACKFILE=~/.local/state/zsh/dirstack

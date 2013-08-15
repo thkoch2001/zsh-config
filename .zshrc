@@ -1705,13 +1705,13 @@ fi
 #       That needs to be the use of $VCS_INFO_message_N_ needs to be changed
 #       to $vcs_info_msg_N_ as soon as we use the included version.
 if [[ "$TERM" == dumb ]] ; then
-    zstyle ':vcs_info:*' actionformats "(%s%)-[%b|%a] " "zsh: %r"
-    zstyle ':vcs_info:*' formats       "(%s%)-[%b] "    "zsh: %r"
+    zstyle ':vcs_info:*' actionformats "[%b|%a] " "zsh: %r"
+    zstyle ':vcs_info:*' formats       "[%b] "    "zsh: %r"
 else
     # these are the same, just with a lot of colors:
-    zstyle ':vcs_info:*' actionformats "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${YELLOW}|${RED}%a${MAGENTA}]${NO_COLOR} " \
+    zstyle ':vcs_info:*' actionformats "${MAGENTA}[${GREEN}%b${YELLOW}|${RED}%a${MAGENTA}]${NO_COLOR} " \
                                        "zsh: %r"
-    zstyle ':vcs_info:*' formats       "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${MAGENTA}]${NO_COLOR}%} " \
+    zstyle ':vcs_info:*' formats       "${MAGENTA}[${GREEN}%b${MAGENTA}]${NO_COLOR}%} " \
                                        "zsh: %r"
     zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b${RED}:${YELLOW}%r"
 fi

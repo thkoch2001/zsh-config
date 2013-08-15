@@ -15,21 +15,6 @@
 # Adjustments would still go to the .zshrc.local file.
 ################################################################################
 
-## Inform users about upgrade path for grml's old zshrc layout, assuming that:
-## /etc/skel/.zshrc was installed as ~/.zshrc,
-## /etc/zsh/zshrc was installed as ~/.zshrc.global and
-## ~/.zshrc.local does not exist yet.
-if [ -r ~/.zshrc -a -r ~/.zshrc.global -a ! -r ~/.zshrc.local ] ; then
-    printf '-!-\n'
-    printf '-!- Looks like you are using the old zshrc layout of grml.\n'
-    printf '-!- Please read the notes in the grml-zsh-refcard, being'
-    printf '-!- available at: http://grml.org/zsh/\n'
-    printf '-!-\n'
-    printf '-!- If you just want to get rid of this warning message execute:\n'
-    printf '-!-        touch ~/.zshrc.local\n'
-    printf '-!-\n'
-fi
-
 ## Settings for umask
 #if (( EUID == 0 )); then
 #    umask 002
@@ -111,7 +96,7 @@ fi
 #setopt nocheckjobs
 
 ## alert me if something failed
-#setopt printexitvalue
+setopt printexitvalue
 
 ## with spelling correction, assume dvorak kb
 #setopt dvorak
@@ -171,8 +156,8 @@ fi
 
 ## global aliases (for those who like them) ##
 
-#alias -g '...'='../..'
-#alias -g '....'='../../..'
+alias -g '...'='../..'
+alias -g '....'='../../..'
 #alias -g BG='& exit'
 #alias -g C='|wc -l'
 #alias -g G='|grep'
@@ -307,7 +292,7 @@ fi
 #alias -s pl='perl -S'
 
 ## ctrl-s will no longer freeze the terminal.
-#stty erase "^?"
+stty erase "^?"
 
 ## you want to automatically use a bigger font on big terminals?
 #if [[ "$TERM" == "xterm" ]] && [[ "$LINES" -ge 50 ]] && [[ "$COLUMNS" -ge 100 ]] && [[ -z "$SSH_CONNECTION" ]] ; then
@@ -330,4 +315,59 @@ fi
 #vimpm ()      { vim `perldoc -l $1 | sed -e 's/pod$/pm/'` }
 #vimhelp ()    { vim -c "help $1" -c on -c "au! VimEnter *" }
 
-## END OF FILE #################################################################
+
+
+
+
+
+# my old zshrc
+# The following lines were added by compinstall
+
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' add-space true
+zstyle :compinstall filename '/home/ymc-toko/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+
+RPS1="%(?..(ret: %?%)) %~"
+PS1="%h%#"
+
+setopt SHARE_HISTORY
+
+#from http://www.bash2zsh.com/essays/essay1_file_manager.html
+autoload -U zsh-mime-setup
+zsh-mime-setup
+
+#from /usr/share/doc/zsh/examples/zshrc
+#
+# Where to look for autoloaded function definitions
+#fpath=($fpath ~/.zfunc)
+
+# Autoload all shell functions from all directories in $fpath (following
+# symlinks) that have the executable bit on (the executable bit is not
+# necessary, but gives you an easy way to stop the autoloading of a
+# particular shell function). $fpath should not be empty for this to work.
+for func in $^fpath/*(N-.x:t); autoload $func
+
+# http://linux-sxs.org/housekeeping/lscolors.html
+# http://www.bigsoft.co.uk/blog/index.php/2008/04/11/configuring-ls_colors?blog=3
+# http://www.linux-user.de/ausgabe/2004/09/068-dircolors/index.html?print=y
+export LS_COLORS='di=94:fi=0:ln=04:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=92:*.rpm=90'
+alias "ls=ls --color=auto"
+
+zstyle ':vcs_info:*' enable git
+
+. ~/.myenvironment
