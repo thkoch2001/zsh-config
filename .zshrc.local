@@ -332,7 +332,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.local/state/zsh/histfile
+DIRSTACKFILE=~/.local/state/zsh/dirstack
+mkdir -p $(dirname $HISTFILE)
+
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
@@ -350,11 +353,6 @@ setopt SHARE_HISTORY
 #from http://www.bash2zsh.com/essays/essay1_file_manager.html
 autoload -U zsh-mime-setup
 zsh-mime-setup
-
-#from /usr/share/doc/zsh/examples/zshrc
-#
-# Where to look for autoloaded function definitions
-#fpath=($fpath ~/.zfunc)
 
 # Autoload all shell functions from all directories in $fpath (following
 # symlinks) that have the executable bit on (the executable bit is not
