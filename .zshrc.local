@@ -392,3 +392,7 @@ alias cp='cp --reflink=auto --sparse=always'
 
 # disable flow control behaviour of CTRL+S, CTRL+Q
 setopt NO_FLOW_CONTROL
+
+for file in ~/.config/zsh/local.d/*.zsh(N); do
+    source "$file"
+done
