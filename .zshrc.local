@@ -394,5 +394,5 @@ alias cp='cp --reflink=auto --sparse=always'
 setopt NO_FLOW_CONTROL
 
 for file in ~/.config/zsh/local.d/*.zsh(N); do
-    source "$file"
+  [ -r "$file" ] && source "$file"
 done
