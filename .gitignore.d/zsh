@@ -1,5 +1,1 @@
-*
-!.gitignore.d
-!.gitignore.d/zsh
-!.zshrc*
-!.config/zsh
+zsh-config
