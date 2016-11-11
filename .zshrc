@@ -1,3 +1,6 @@
+# make emacs tramp work
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && RPS1='' && return 0
+
 # Filename:      /etc/zsh/zshrc
 # Purpose:       config file for zsh (z shell)
 # Authors:       grml-team (grml.org), (c) Michael Prokop <mika@grml.org>
