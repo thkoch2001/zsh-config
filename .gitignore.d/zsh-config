@@ -1,5 +1,6 @@
 *
 .*
 !/.gitignore.d/zsh-config
+!/.zshenv
 !/.zshrc*
 !/.config/zsh
