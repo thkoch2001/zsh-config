@@ -386,7 +386,7 @@ alias "ls=ls --color=auto"
 
 zstyle ':vcs_info:*' enable git
 
-. ~/.myenvironment
+. ~/.config/environment/source_local_d.sh
 
 alias cp='cp --reflink=auto --sparse=always'
 
